@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			border: 1px solid #ccc;
+			background-color: #ccc;
+		}
+		#table{
+			position: relative;
+			left: 50px;
+			top: 50px;
+		}
+		#t{
+			position: relative;
+			left:170px;
+			top: 20px;
+		}
+		.in{width:270px;
+			height: 50px;
+		}
+		#n{
+			width: 100%;
+			height: 300px;
+			background: url(images/密语5.jpg) no-repeat;
+			background-size: 100%;
+		}
+		#n1{
+			width: 200px;
+			height:1100px;
+			float: left;
+		}
+		#n2{
+			width:935px;
+			height: 1100px;
+			float: left;
+		}
+		#n4{
+			width: 200px;
+			height: 1100px;
+			float: left;
+		}
+		#n3{
+			margin-left:150px;
+			list-style:none;
+			line-height:27px;
+		}
+		#n5{
+			width: 465px;
+			height: 300px;
+			float: left;
+			background: url(images/K.jpg) no-repeat;
+			background-size: 100%;
+		}
+		* {
+			font-size:15px;
+			margin:0px;
+			padding:0px;
+		}
+		#nav{
+			margin-top: 30px;
+			margin-left:400px;
+			list-style:none;
+			line-height:27px;
+		}
+		#nav a:link,#nav a:visited{
+			display:block;
+			width:120px;
+			color: black;
+			text-align:center;
+			text-decoration:none;
+			background:#CCC;
+		}
+		#nav a:hover{
+			color: #FFF;
+			text-decoration: underline;
+			font-weight: bold;
+			background:orange;
+		}
+		#nav ul{list-style: none;}
+		#nav li{
+			float:left;
+			width: 120px;
+		}
+		#nav li ul li a:hover{
+			background:orange;
+		}
+
+		#nav li ul{
+			display:none;
+		}
+		#nav li.subMenuShow ul{
+			display:block;
+		}
+		img{width: 154px;}
+		#img{
+			width: 935px;
+			height: 300px;
+		}
+		.head{ 
+				padding: 5px; 
+				background: #96E555; 
+				cursor: pointer;
+				width: 400px; 
+			}
+		.content{ 
+				padding: 10px; 
+				text-indent: 2em; 
+				border-top: 1px solid #0050D0;
+				display: none;
+			}
+		span img{
+				width: 125px;
+				height:200px;
+		}
+		#picScroll{
+				margin:0 auto;
+				height:200px;
+				border:1px solid #C90;
+				white-space:nowrap; 
+				width:920px;
+				overflow:hidden;
+			}
+		#tclick{
+			width: 300px;
+			height: 100px;
+			background: orange;
+			position: absolute; 
+			opacity: 0;
+		}
+		#sclick{
+			width: 300px;
+			height:500px;
+			background:#00ffff;
+			position: absolute; 
+			opacity: 0;
+		}
+	</style>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var liNodes = document.getElementsByTagName("li");
+			for (var i=0; i<liNodes.length; i++)
+			{
+				liNodes[i].onmouseover = function(){
+					this.className = "subMenuShow";
+				}
+				liNodes[i].onmouseout = function(){
+					this.className = "";
+				}
+			}
+			var speed = 10; 
+			picScroll = document.getElementById("picScroll");
+			picScroll1 = document.getElementById("picScroll1");
+			picscroll2 = document.getElementById("picScroll2");
+			picscroll2.innerHTML = picScroll1.innerHTML;
+			var ID=setInterval(changeToLeft,speed);
+			picScroll.onmouseover=function() {
+				clearInterval(ID);
+			}
+			picScroll.onmouseout=function() {
+				ID=setInterval(changeToLeft,speed);
+			}
+		};
+		function changeToLeft(){
+			if(picScroll.scrollLeft >= (picScroll1.offsetWidth)){
+				picScroll.scrollLeft = 0;
+			}
+			else{
+				picScroll.scrollLeft += 1;
+			}
+		}
+		var images=document.getElementsByTagName("img");
+		function showbig(n){
+			for (var i =0 ;i<=6; i++) {
+				images[i].style.border="0px";
+			}
+			var btn = document.getElementById(n);
+			btn.style.border="2px solid orange";
+			document.getElementById("img").src=btn.src;
+		}
+		$(document).ready(function(){
+			  	$("button").click(function(){
+			  		$("p").show(5000);
+			  	});
+			});
+	</script>
+</head>
+<body>
+	<div id="n">
+		<ul id="nav">
+		<li><a  href="#">Home</a>
+			<ul >
+				<li><a href="#">myparents</a></li>
+				<li><a href="#">myboyfriend</a></li>
+			</ul>
+		</li>
+		<li><a href="#">BestDay</a>
+			<ul>
+				<li><a href="#">Encounter</a></li>
+				<li><a href="#">Acquaintance</a></li>
+				<li><a href="#">Anniversary</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Photos</a>
+			<ul>
+				<li><a href="#">Parents</a></li>
+				<li><a href="#">Boyfriend</a></li>
+			</ul>
+		</li>
+		<li><a href="#">OurStory</a>
+			<ul>
+				<li><a href="#">GrowUp</a></li>
+				<li><a href="#">ThanksGiving</a></li>
+			</ul>
+		</li>
+		<li><a href="#">About</a>
+			<ul>
+				<li><a href="#">ManyYears</a></li>
+				<li><a href="#">Parents'pay</a></li>
+				<li><a href="#">TheirLove</a></li>
+			</ul>
+		</li>
+	</ul>
+	<input type="button" name="注册" value="注册" id="n3">
+	<input type="button" name="登录" value="登录">
+	</div>
+	<div id="n1"></div>
+	<div id="n2">
+		<table>
+		<tr id="nav">
+			<td><img src="images/f.jpg" onclick="showbig('no4')" id="no4"></td>
+			<td><img src="images/a.jpg" onclick="showbig('no1')" id="no1"></td>
+			<td><img src="images/e.jpg" onclick="showbig('no3')" id="no3"></td>
+			<td><img src="images/j.jpg" onclick="showbig('no5')" id="no5"></td>
+			<td><img src="images/i.jpg" onclick="showbig('no6')" id="no6"></td>
+			<td><img src="images/b.jpg" onclick="showbig('no2')" id="no2"></td>
+		</tr>
+	</table>
+	<img src="images/g.jpg" id="img">
+	<div id="n5">
+		<button>我们现在拥有的爱(点击有感悟)</button>
+		<p class="content">
+			有些人，你以为可以再见面的；有些事，你以为可以再继续的。然而，也许在你转身的那个刹那，有些人，你就再也见不到了。当太阳落下，又升起的时候，一切都变了，一不小心就再也回不去了。每个有梦想的人，都会有一段艰难的时刻、为了找回自己。 曾经的你。 天真无邪的笑容、纤尘不染的内心、不随世俗的态度。那是不可触及的纯真年华，有生命里最张扬的美丽！曾记否，你讨厌父母的唠叨，无意间，你和父母之间产生了隔阂，可是总要等到失败后，才知道父母讲的都是金玉良言。曾记否，翅膀还未硬的你，却想摆脱父母，展翅飞翔。可是总要等到自己受伤后，才知道父母的怀抱是最温暖的避风港。我们的母爱似水一般柔和，温和而细腻；我们的父爱如山一般雄伟，深沉而伟大。我们从小就在父母的臂弯下长大，如今，我们就要陪伴在父母的身边，不让他们感到孤独。我们应懂得感恩，感恩所有为我们付出的人！感谢他们给了我们幸福的一生。
+		</p>
+	</div>
+	<div id="n5">
+		<table id="table">
+			<tr>
+				<td>问题:</td>
+				<td><input id="userName" value="假如人生只剩下一天，会怎样度过？" class="in"></td>
+			</tr>
+			<tr>
+				<td>答案:</td>
+				<td><input  type="password" class="in"></td>
+			</tr>
+			<tr>
+				<td>确认答案:</td>
+				<td><input type="password" class="in"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button onclick="sub()" id="t">提交</button></td>
+			</tr>
+		</table>
+	</div>
+	<div id="picScroll">
+		<span id="picScroll1">
+			<img src="images/11.jpg" />
+			<img src="images/密语0.jpg" />
+			<img src="images/12.jpg" />
+			<img src="images/密语2.jpg" />
+			<img src="images/13.jpg" />
+			<img src="images/密语3.jpg" />
+			<img src="images/14.jpg" />
+			<img src="images/密语6.jpg" />
+			<img src="images/密语1.jpg" />
+		</span>
+		<span id="picScroll2"></span>
+		</div> 
+		<button id="tclick1">To Mrs Liu(click)</button>
+		<div id="tclick">
+			<p id="tclick2">我们相识相知到相恋，我么经历了他们口中说的人生转折点，我们也经过了他们所谓的异地恋，我们吵过、闹过，但没分开过。我们也要珍惜这份来之不易的感情，很喜欢一句话“所爱隔山海，山海皆可平”！我爱哭，不是因为我懦弱，也不是因为我难过，是因为我喜极而泣。我没有办法像正常人那样生活，如果你离开我，我不知道我的生活会变。</p>
+		</div>
+		<button id="sclick1">To My Parents(click)</button>
+		<div id="sclick">
+			<p id="sclick2">我感恩我的父母，是他们给予我生命，给了我一个温暖的家。坚实而温馨的避风港将永过成为我栖息的地方。我感恩我的爸爸，妈妈和姐姐，是他们为我创造了无忧无虑的氛围，使美妙的童真永存于我的记忆之中。我感恩我的老师，是他们阳光般的笑脸抚慰我心灵的创伤，用无悔的青春书写不朽的辉煌篇章。我感恩我的朋友，同学，是他们让我感到集体生活的快乐，“朋友是世上最大的宝贝。”让学生时代成为相册中最真最纯的一页。我感恩那些曾施予恩泽的人，是他们让我感到人间处处有真情，人与人之间的缝隙中不只是无形的空气。我感恩那些被我帮助过的人，是他们给予了我回报他人的机会，同时也让我感悟到：助人之乐，妙不可言。我感恩那些鼓励过的人，是他们让我看到希望的晨曦，一改颓然，乘着行动之舟朝梦想的彼岸驶去。我感恩对我不满的人，是他们的不满，我才认识到自己的不足，从而朝着正确的方向前进。我感恩嘲笑我的人，是他们给了我前进的动力，让有些动摇的心愈来愈坚定，从而一步步走向成功。</p>
+		</div>
+	</div>
+	<div id="n4"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var userName,password,password2;
+	    function sub() {
+	        userName = $('#userName').val();
+	        password = $('input[type="password"]')[0].value;
+	        password2 = $('input[type="password"]')[1].value;
+	        if (!password || !password2) {
+	            alert('陪在亲人身边，寸步不离');
+	            return;
+	        }
+	        if (password !== password2) {
+	            alert('我的答案：陪在亲人身边，寸步不离；人生有点遗憾，请从新输入');
+	            return;
+	        }
+	        alert('完美人生');
+	    }
+	$(function(){
+		        $("#tclick1").click(function(){
+		            $("#tclick").animate({left: "500px", height:"200px" ,opacity: "1"}, 3000)
+							.animate({top: "1100px" , width :"300px"}, 3000 )
+							.fadeOut("slow");
+		        });
+		    });
+	$(function(){
+		        $("#sclick1").click(function(){
+		            $("#sclick").animate({left: "500px", height:"500px" ,opacity: "1"}, 3000)
+							.animate({top: "900px" , width :"300px"}, 3000 )
+							.fadeOut("slow");
+		        });
+		    });
+</script>
+
